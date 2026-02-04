@@ -1,0 +1,8 @@
+# .streamlit/config.toml
+[theme]
+base="dark"
+primaryColor="#00d1ff"  # 科技感青蓝色
+backgroundColor="#0e1117"
+secondaryBackgroundColor="#1d2129"
+textColor="#fafafa"
+font="sans serif"
