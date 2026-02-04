@@ -7,3 +7,6 @@ pip install streamlit
 
 ## 安装环境变量管理工具（用于保护你的 API Key）
 pip install python-dotenv
+
+## Run
+'python3 -m streamlit run app.py'
