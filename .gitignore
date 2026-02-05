@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtualenv
+venv/
+.env/
+
+# Node (如果有)
+node_modules/
+
+# Secrets
+*.pem
+*.key
+
