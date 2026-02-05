@@ -1,12 +1,26 @@
 # gemini-3-booking
-## 安装 Google 最新一代 Gemini 3 SDK
+## Setting
+### Install Google latest Gemini 3 SDK
 `pip install -U google-genai`
 
-## 安装前端框架（用于显示你那个黑金风格的订票界面）
+### install the front-end app
 `pip install streamlit`
 
-## 安装环境变量管理工具（用于保护你的 API Key）
+### protect your api key
 `pip install python-dotenv`
 
-## Run
+### .env setting
+`
+SMTP_PORT=587
+SENDER_EMAIL=a1afbb001@smtp-brevo.com
+SENDER_PASSWORD=your@Pass@key
+EMAIL_USE_TLS=True
+
+EMAIL_FROM=noreply@myagentbooking.com
+EMAIL_FROM_NAME=MyAgent Booking
+EMAIL_REPLY_TO=support@myagentbooking.com
+
+`
+### Run
 `python3 -m streamlit run app.py`
+
