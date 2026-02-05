@@ -1,31 +1,30 @@
-# gemini-3-booking
-## Setting
-### Install Google latest Gemini 3 SDK
-`pip install -U google-genai`
+# ✈️ Gemini-3-Booking
 
-### install the front-end app
-`pip install streamlit`
+An **AI-powered travel booking agent** built with **Gemini 3** and **Streamlit**,  
+designed to generate itineraries and send **real transactional emails automatically**.
 
-### protect your api key
-`pip install python-dotenv`
+> From natural-language trip planning → structured itineraries → email confirmations.
 
-### .env setting
+---
 
-SMTP_PORT=587
+## 🌍 Live Demo
 
-SENDER_EMAIL=a1afbb001@smtp-brevo.com
+🔗 **http://myagentbooking.com**
 
-SENDER_PASSWORD=your@Pass@key
+> Demo runs on Streamlit.  
+> In production, the app is deployed behind a reverse proxy (no exposed port).
 
-EMAIL_USE_TLS=True
+---
 
-EMAIL_FROM=noreply@myagentbooking.com
+## ✨ What This Project Does
 
-EMAIL_FROM_NAME=MyAgent Booking
+- 🤖 **Gemini 3–powered travel agent**
+- 🗺️ Generate structured travel itineraries
+- 📧 Automatically send booking / confirmation emails
+- ⚡ Fully server-side email automation (no manual action)
+- 🌐 Simple and clean web interface (Streamlit)
 
-EMAIL_REPLY_TO=support@myagentbooking.com
+---
 
-
-### Run
-`python3 -m streamlit run app.py`
+## 🧠 Architecture Overview
 
