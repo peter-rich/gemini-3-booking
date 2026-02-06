@@ -1,0 +1,17 @@
+streamlit==1.29.0
+google-generativeai==0.3.1
+python-dotenv==1.0.0
+reportlab==4.0.7
+requests==2.31.0
+schedule==1.2.0
+
+# Additional for free APIs
+beautifulsoup4==4.12.2  # For web scraping fallback
+lxml==4.9.3  # XML/HTML parsing
+
+# Database (built-in with Python 3)
+# sqlite3
+
+# For production deployment
+gunicorn==21.2.0
+watchdog==3.0.0

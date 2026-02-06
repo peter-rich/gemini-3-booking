@@ -5,12 +5,17 @@ Improvements:
 - Type hints for better code maintainability
 - Cleaner API configuration
 - Enhanced system instructions
+- Fixed environment variable loading
 """
 import os
 import logging
 from typing import Optional, Dict, Any
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
+
+# Load environment variables FIRST
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -32,7 +37,7 @@ class TravelAgent:
     - Set GOOGLE_API_KEY in environment variables
     """
     
-    def __init__(self, model_id: str = "gemini-3-flash-preview"):
+    def __init__(self, model_id: str = "gemini-3.0-flash") -> None:
         """
         Initialize the travel agent with Gemini API.
         
@@ -57,18 +62,27 @@ class TravelAgent:
             RuntimeError: If no API key found
         """
         # Try multiple environment variable names for flexibility
-        api_key = "AIzaSyBSEVCtaX6_Ump81msHObvjUMeFzPeD2IA"
+        api_key = (
+            os.getenv("GOOGLE_API_KEY") or 
+            os.getenv("GEMINI_API_KEY") or 
+            os.getenv("GOOGLE_GENAI_API_KEY")
+        )
         
         if not api_key:
             error_msg = (
-                "Missing API key. Please set one of these environment variables:\n"
+                "❌ Missing API key. Please set one of these environment variables:\n"
                 "  - GOOGLE_API_KEY (recommended)\n"
                 "  - GEMINI_API_KEY\n"
-                "  - GOOGLE_GENAI_API_KEY"
+                "  - GOOGLE_GENAI_API_KEY\n\n"
+                "💡 How to fix:\n"
+                "  1. Create/edit .env file\n"
+                "  2. Add: GOOGLE_API_KEY=your_key_here\n"
+                "  3. Restart the application"
             )
             logger.error(error_msg)
             raise RuntimeError(error_msg)
         
+        logger.info(f"✓ API key found (length: {len(api_key)})")
         return genai.Client(api_key=api_key)
     
     def plan_trip(self, user_query: str) -> types.GenerateContentResponse:
@@ -99,12 +113,16 @@ class TravelAgent:
         )
         
         try:
+            logger.info(f"Creating chat session with model: {self.model_id}")
             chat = self.client.chats.create(model=self.model_id, config=config)
+            
+            logger.info(f"Sending message: {user_query[:50]}...")
             response = chat.send_message(user_query)
-            logger.info("Successfully generated travel plan")
+            
+            logger.info("✓ Successfully generated travel plan")
             return response
         except Exception as e:
-            logger.error(f"Error generating travel plan: {e}")
+            logger.error(f"❌ Error generating travel plan: {e}")
             raise
     
     def _build_system_instruction(self) -> str:
@@ -206,18 +224,31 @@ D) **Output Two Parts:**
 if __name__ == "__main__":
     # This is a standalone test - normally called from the Streamlit app
     try:
+        print("="*60)
+        print("Testing Travel Agent")
+        print("="*60)
+        
         agent = TravelAgent()
+        print(f"\n✓ Agent initialized")
         print(f"Model Info: {agent.get_model_info()}")
         
         # Example query
         test_query = "Plan a 5-day trip to Tokyo from March 15-20, staying in Shibuya area"
         print(f"\nProcessing query: {test_query}")
+        print("-"*60)
         
         response = agent.plan_trip(test_query)
+        
         print("\n--- Agent Response ---")
         print(response.text)
         
+        print("\n" + "="*60)
+        print("✓ Test completed successfully!")
+        print("="*60)
+        
     except RuntimeError as e:
-        print(f"Setup Error: {e}")
+        print(f"\n❌ Setup Error: {e}")
     except Exception as e:
-        print(f"Execution Error: {e}")
+        print(f"\n❌ Execution Error: {e}")
+        import traceback
+        traceback.print_exc()
