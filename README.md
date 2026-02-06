@@ -9,7 +9,7 @@ designed to generate itineraries and send **real transactional emails automatica
 
 ## 🌍 Live Demo
 
-🔗 **http://myagentbooking.com**
+🔗 **http://myagentbooking.com:8501**
 
 > Demo runs on Streamlit.  
 > In production, the app is deployed behind a reverse proxy (no exposed port).
