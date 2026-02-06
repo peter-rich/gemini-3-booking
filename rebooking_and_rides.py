@@ -7,7 +7,8 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 import json
-
+from dotenv import load_dotenv
+load_dotenv()
 logger = logging.getLogger(__name__)
 
 
