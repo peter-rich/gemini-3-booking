@@ -138,9 +138,9 @@ class TravelAgent:
 
 **Hard Requirements:**
 
-A) **Flights**: Must compare options from BOTH EWR and JFK airports to the destination specified in the user query. For each flight option, provide a deep link with query parameters that lock in the route/dates as much as possible.
+A) **Flights**: Must compare options from BOTH near by airports to the destination specified in the user query from booking.com or https://www.expedia.com/Flights . For each flight option, provide a deep link with query parameters that lock in the route/dates as much as possible.
 
-B) **Hotels**: Provide 3 different price tiers (budget/comfort/luxury), each with a clickable booking link.
+B) **Hotels**: Provide 3 different price tiers (budget/comfort/luxury), each with a clickable booking link in the booking.com.
 
 C) **Transportation**: Must provide estimates for TWO segments:
    - Home → Airport (Piscataway to EWR/JFK)
