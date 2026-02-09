@@ -3,8 +3,10 @@
 ## Demo
 My Agent Booking(https://www.myagentbooking.com/)
 
-Race page(https://devpost.com/software/my-agent-booking)
+### Race page(https://devpost.com/software/my-agent-booking)
 A complete, production-ready travel planning system with AI-powered itinerary generation, real-time flight monitoring, budget tracking, and automated email notifications.
+
+### Video (https://youtu.be/5tVUfXT4MSA)
 
 ## ✨ Core Features
 
