@@ -114,10 +114,8 @@ GOOGLE_PLACES_API_KEY=your_key_here
 
 ```bash
 # Run enhanced version with all features
-streamlit run app_enhanced.py
+bash deploy.sh
 
-# Or run original version
-streamlit run app.py
 ```
 
 Visit `http://localhost:8501` in your browser.
